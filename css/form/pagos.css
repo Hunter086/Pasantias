@@ -1,0 +1,68 @@
+footer{
+    position: fixed;
+    
+  }
+  
+  body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .content{
+    display: flex;
+    height: 84vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+    .container-box {
+      width: 60%;
+      padding: 1rem;
+      background: rgba(0,0,0,.5);
+      box-sizing: border-box;
+      box-shadow: 0 15px 25px rgba(0,0,0,.6);
+      border-radius: 10px;
+    }
+    .container-box h1 {
+      font-size: 2rem;
+      padding: 0;
+      color: #fff;
+      text-align: center;
+    }
+    .container-box h2 {
+      font-size: 3rem;
+      padding: 0;
+      color: rgb(43, 43, 43);
+    }
+    .container-title-box{
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.5rem;
+    }
+    .container-content-box{
+        display: flex;
+        justify-content: space-around;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .content-box{
+        width: 33.33333333333%;
+        text-align: center;
+    }
+    .container-archive-box{
+        display: flex;
+        justify-content: space-around;
+        font-size: 1.2rem;
+    }
+    .archive-box{
+        width: 33.33333333333%;
+        text-align: center;
+    }
+    #pagoCondition{
+        color: aliceblue;
+        padding: 0.25rem;
+    }
+  /* Para 600px */  
+  @media only screen and (max-width: 600px) and (min-width: 5px)  {  
+      
+  } 

@@ -1,0 +1,13 @@
+.bi {
+    /*no es clickeable*/
+    pointer-events: none;
+    /*toma el color definido en los li,  o del contenedor en el que este*/
+    fill: currentColor;
+  }
+  #by{
+    width: 150px;
+    position: fixed;
+    opacity: 0.5;
+    bottom: 10%;
+    right: 0;
+  }

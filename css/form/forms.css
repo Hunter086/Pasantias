@@ -1,0 +1,325 @@
+:root{
+  --color-back-form: rgba(32, 51, 69,0.7);
+}
+footer{
+    position: fixed;
+    z-index: 1;
+  }
+
+.content{
+    margin: 0.5rem 10% 5rem 10%;
+    padding: 2rem;
+    background: var(--color-back-form);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    border-radius: 10px;
+    
+}
+/*only datatable*/
+.content-datatable{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.container-datatable-box{
+  margin: 0.5rem 1rem 4rem 1rem;
+  width: 100%;
+  padding: 2rem;
+  background: var(--color-back-form);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+.container-datatable-box #list_tittle{
+  font-size: 2rem;
+  font-weight: 700;
+  display: block;
+  text-align: center;
+
+}
+.container-table{
+  
+}
+/*This in cdn datatable*/
+.dataTables_wrapper{
+}
+/*end only datatable*/
+.contacto{
+  text-decoration: none;
+  list-style:none;
+}
+.contacto input::placeholder {
+  font-size: 1.2em;
+  color: white;
+}
+
+/*END*/
+#empresa_contacto, #pasante_contacto, #modificar_pasante_contacto{
+  display: none;
+}
+.container-box .container-form-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+}
+
+.container-box h1 {
+    margin: 0 0 10px;
+    font-size: 3rem;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+  }
+  .container-box h2 {
+    margin: 0 0 10px;
+    font-size: 30px;
+    padding: 0;
+    color: rgb(43, 43, 43);
+  }
+  .container-box .form-box,.form-choice,.form-text {
+    position: relative;
+    text-align: center;
+    margin: 1rem;
+    width: 33.333333%;
+  }
+  .form-box a{
+    text-decoration: none;
+    color: antiquewhite;
+  }
+  .form-box select {
+    background-color: rgba(0,0,0,.2);
+    font-size: 1.8rem;
+    color: #fff;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+    display: flex;
+    align-items: flex-start;
+  }
+  .form-box select option{
+    background-color: rgba(0,0,0,.5);
+  }
+
+  .container-box .form-choice input,.form-text textarea{
+    margin-bottom: 20px;
+  }
+  .container-box .form-text textarea{
+    width: 200%;
+    height:100px;
+    max-width: 700px;
+    max-height: 100px;
+    border: 1px dotted #000099;
+  }
+  .container-box .form-choice label {
+    padding: 0px 25px;
+    font-size: 2rem;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+  }
+  .container-box .form-text label {
+    display: block;
+    color: #03e9f4;
+    font-size: 2rem;
+    padding-bottom: 30px;
+    
+  }
+  .container-box .form-choice input:checked ~ label{
+    top: -3rem;
+    left: 0;
+    color: #03e9f4;
+    font-size: 2rem;
+  }
+  .container-box .form-box input{
+    font-size: 1.8rem;
+    color: #fff;
+    width: 100%;
+    margin: 0.5rem 0 0.5rem 0;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+    display: flex;
+    align-items: flex-start;
+  }
+  .container-box .form-box label {
+    position: absolute;
+    top: -1rem;
+    left: 0rem;
+    padding: 1rem 0;
+    font-size: 2rem;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+    display: inline;
+    
+  }
+  .container-box .form-box input:focus ~ label, .form-box input:valid ~ label {
+    top: -2.2rem;
+    left: 0rem;
+    color: #03e9f4;
+    font-size: 1.6rem;
+  }
+  .container-form-box .form-box li label{
+    display: none; 
+  }
+  
+  .container-form-box-buttom button {
+    background: none;
+    border: none;
+    position: relative;
+    display: inline-block;
+    color: #03e9f4;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    letter-spacing: 4px;
+    pointer-events: visible;
+    cursor: pointer;
+  }
+  .container-form-box-buttom a{ 
+    
+  }
+  .container-form-box-buttom button {
+    pointer-events: visible;
+    cursor: pointer;
+  }
+  .container-form-box-buttom button:hover {
+    background: #03e9f4;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 50px #03e9f4,
+                0 0 100px #03e9f4;
+    pointer-events: visible;
+    cursor: pointer;
+  }
+  .container-form-box-buttom a{
+    margin-left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+  }
+  
+  .container-form-box-buttom a span {
+    position: absolute;
+    display: block;
+  }
+  
+  .container-form-box-buttom a span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #03e9f4);
+    animation: btn-anim1 1s linear infinite;
+  }
+  @keyframes btn-anim1 {
+    0% {
+      left: -100%;
+    }
+    50%,100% {
+      left: 100%;
+    }
+  }
+  
+  .container-form-box-buttom a span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #03e9f4);
+    animation: btn-anim2 1s linear infinite;
+    animation-delay: .25s
+  }
+  
+  @keyframes btn-anim2 {
+    0% {
+      top: -100%;
+    }
+    50%,100% {
+      top: 100%;
+    }
+  }
+  
+  .container-form-box-buttom a span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #03e9f4);
+    animation: btn-anim3 1s linear infinite;
+    animation-delay: .5s
+  }
+  
+  @keyframes btn-anim3 {
+    0% {
+      right: -100%;
+    }
+    50%,100% {
+      right: 100%;
+    }
+  }
+  
+  .container-form-box-buttom a span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #03e9f4);
+    animation: btn-anim4 1s linear infinite;
+    animation-delay: .75s
+  }
+  
+  @keyframes btn-anim4 {
+    0% {
+      bottom: -100%;
+    }
+    50%,100% {
+      bottom: 100%;
+    }
+  }
+.container-form-box-progress{
+    display: block;
+    justify-content: center;
+    width: 100%;
+    background-color: rgba(0,0,0,.2);
+}
+.container-form-box-progress .progress-bar{
+    background-color: rgb(0, 119, 255);
+}
+.container-form-box-progress .progress-bar span{
+    margin-left: 50%;
+}
+#btn-contact{
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 1rem 1rem;
+  margin: 1rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor:pointer; 
+  cursor: hand;
+  font-size: 1rem;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#btn-contact:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+#myTable_wrapper{
+  position: relative;
+  font-size: 1.1rem;
+}

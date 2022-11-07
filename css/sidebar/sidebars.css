@@ -1,0 +1,195 @@
+body {
+  background-color: hsl(11, 0%, 88%) !important;
+}
+
+/* Menu */
+.navbar{
+  background-color: hsl(206, 47%, 35%);
+}
+/* Menu  Desplegable*/
+.navbar-collapse {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background-color: hsl(183, 83%, 35%, 0.9);
+}
+/* Boton Menu Desplegable*/
+.navbar-toggler{
+  margin-left: 2vh;
+}
+
+/*Animación  Menu Desplegable (en este paso esta desactivado desaparece a la izquierda) */
+.navbar-collapse.collapsing {
+  
+  -webkit-transition: left 0.3s ease;
+  -o-transition: left 0.3s ease;
+  -moz-transition: left 0.3s ease;
+  transition: left 0.3s ease;
+  left: -20%;
+}
+/*Animación  Menu Desplegable Activo(con una leve animación aparece a la derecha) */
+.navbar-collapse.show {
+  left: 0;
+  -webkit-transition: left 0.3s ease-in;
+  -o-transition: left 0.3s ease-in;
+  -moz-transition: left 0.3s ease-in;
+  transition: left 0.3s ease-in;
+  
+}
+/* Logo sidebar*/
+#logoGrande{
+  position: fixed;
+
+  text-align: right;
+  right: 0;
+}
+/* logo navbar*/
+#logoMenu{
+  margin-top: 65%;
+}
+/* Boton de Logout*/
+#logout{
+  margin-left: 2vh;
+}
+/* Son los botones de los lu del menu desplegable*/
+.bi {
+  /*no es clickeable*/
+  pointer-events: none;
+  /*toma el color definido en los li,  o del contenedor en el que este*/
+  fill: currentColor;
+}
+/* dropdown del usuario*/
+#dropdownUser1 {
+  position: fixed;
+  bottom: 0;
+}
+
+#soporte{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  
+}
+#by{
+  position: fixed;
+  opacity: 0.5;
+  top: 17%;
+  left: 50%;
+}
+/*Menu navegacion cada item*/
+.nav-item{
+  color: rgba(223, 223, 223, 0.90);
+  text-align: left;
+}
+/*Menu navegacion cada item cuando se apreta el boton*/
+.nav-item:hover{
+  color: rgba(223, 223, 223, 0.90);
+  text-align: center;
+  
+}
+/*Boton navegacion solo se hace referencia a el boton*/
+#nav-link:hover{
+ background-color: hsl(41, 98%, 53%);
+ 
+}
+/*Lista de Opciones Menu*/
+#listadeOpcionesMenu{
+  padding-left: 2vh;
+  padding-right: 2vh;
+}
+/*a aca dropdown se lo pinta de gris !important para sobre escribir todo*/
+.dropdown li a {
+  color: #898d83 !important;
+}
+/*no es parte del sidebar base pero es una propiedad del templeate convenio Finalizado*/
+#convenioFinalizado{
+  border: .5px solid #d8cdcd;
+  box-shadow: 2px 3px 10px #d8cdcd;
+  border-radius: 15px;
+  /*position: absolute;
+  top: 8%;
+  left: 8%;
+  transform:  scaleX(0.8); 
+  transform:  scaleY(0.8); */
+}
+/*no es parte del sidebar base pero es una propiedad del templeate convenio Finalizado*/
+.sombra {
+background-color: #A7A7A7;
+
+}
+/*esta configuración fue colocada ya que en algunos formularios apararecian los nombres de los mismo
+pero no es una propiedad del base se deberia correr a otro css*/
+label{
+  display: none;
+}
+/*Configuraciones de Alertas toast*/
+.alert{
+  right: 0;
+  top: 8vh;
+  position: fixed;
+  display:flex;
+  align-items: right;
+  opacity:75%;
+
+  /*Chrome, Safari*/
+  -webkit-transition: width 8ms linear 1s;
+  /*Firefox*/
+  -moz-transition: width 8ms linear 1s;
+  /*Opera*/
+  -o-transition: width 8ms linear 1s;
+  /*Standard*/
+  transition: width 8ms linear 1s;
+  animation-duration: 1.5s;
+  animation-name: slidein;
+  
+
+}
+/*Configuraciones de Alertas toast (esta opción hace una animacion de derecha a izquierda)*/
+@keyframes slidein {
+  from {
+    margin-right: -30%;
+   
+    
+  }
+
+  to {
+    margin-right: 0%;
+    
+   
+  }
+}
+/*Configuraciones de Alertas toast para dispositivos celulares*/
+@media screen and (max-width: 600px) {
+  .alert{
+    right: 0;
+    top: 11% !important;
+    position: fixed;
+    display:flex;
+    align-items: right;
+    /*Chrome, Safari*/
+    -webkit-transition: width 8ms linear 1s;
+    /*Firefox*/
+    -moz-transition: width 8ms linear 1s;
+    /*Opera*/
+    -o-transition: width 8ms linear 1s;
+    /*Standard*/
+    transition: width 8ms linear 1s;
+    animation-duration: 1.5s;
+    animation-name: slidein;
+  
+
+  }
+}
+  @keyframes slidein {
+    from {
+      margin-right: -30%;
+     
+      
+    }
+  
+    to {
+      margin-right: 0%;
+      
+     
+    }
+  }

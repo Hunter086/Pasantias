@@ -1,0 +1,132 @@
+.content {
+    background-color: rgba(255, 255, 255, .7);
+    padding: 1rem;
+    border-radius: var(--rounded-edge);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* .content * {
+    border: solid 1px red;
+} */
+
+.content .id-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.content .id-card img {
+    width: 8rem;
+    border-radius: 4rem;
+}
+.content .id-card .title {
+    color: var(--unraf-gray);
+}
+
+.content .filters {
+    color: var(--unraf-gray);
+    margin-bottom: -1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.busqueda {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.busqueda *{
+    font-size: small;
+    padding: .2rem;
+}
+
+table {
+    color: var(--unraf-gray);
+    border-spacing: 0;
+    font-size: .9rem;
+    box-shadow: .1rem .25rem .5rem .1rem rgba(0,0,0,0.1);
+}
+
+table th, table td {
+    text-align: center;
+    padding: .5rem;
+}
+
+table thead th {
+    background-color: var(--unraf-blue);
+    color: white;
+}
+
+table thead tr th:first-child{
+    border-top-left-radius: var(--rounded-edge-sm);
+}
+
+table thead tr th:last-child{
+    border-top-right-radius: var(--rounded-edge-sm);
+}
+
+table tbody tr {
+    border-bottom: 1px solid black;
+}
+
+table tbody tr:nth-of-type(even){
+    background-color: #f0f0f0;
+}
+
+.boton {
+    max-width: 6rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1em;
+}
+
+/* table {
+    color: var(--unraf-gray);
+    border-radius: var(--rounded-edge);
+    border-spacing: 0;
+    font-size: .9em;
+    text-align: center;
+
+}
+
+table th, table td {
+    padding: .25rem;
+    border-radius: 1rem;
+}
+
+ table th:first-child {
+    border-top-left-radius: var(--rounded-edge-sm);
+}
+
+table thead tr{
+    font-weight: bold;
+    font-size: 1.2em;
+    background-color: var(--unraf-blue);
+    color: white;
+}
+
+table tbody tr {
+    border-bottom: 1px solid var(--unraf-gray-transp);
+}
+
+table tbody tr:nth-of-type(odd){
+    background-color: #f3f3f3;
+}
+ */
+@media(max-width: 600px) {
+    .filters {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content {
+        margin: .5rem;
+    }
+}
