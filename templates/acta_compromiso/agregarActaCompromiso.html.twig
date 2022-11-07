@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cargar Acta Compromiso{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/pasantia.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Acta Compromiso</h2> 
+        <h1>Cargar Acta Compromiso</h1> 
+            {{ form_start(formulario, {'enctype':'multipart/form-data'})}}
+                
+
+
+            {{ form_end(formulario) }}
+    </div>
+
+
+
+</main>
+
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+       {{parent()}}
+        <script src="{{ asset("js/form/filterSelect.js") }}"></script>
+{% endblock %} 

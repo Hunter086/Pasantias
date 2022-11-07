@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Organizaciones Inactivas{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+    {{parent()}}
+<main class="content-datatable">
+    <div class="container-datatable-box">
+    <span id="list_tittle">Organizaciones Inactivas</span>
+        <table class="container-table" id="myTable">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cuit</th>
+                    <th>Ver Datos</th> 
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for empresa in empresas %}
+                    <tr>
+                                            
+                            <td>{{ empresa.nombre }}</td>
+                            <td>{{ empresa.cuit }}</td>
+                            <td> <a href="{{path('verDatosEmpresa', {'id': empresa.id})}}" >
+                                <img src="{{ asset("img/svg/eye-solid.svg") }}"></img>
+                            </a></td>                  
+                            <td> <a href="{{path('modificarEmpresa', {'id': empresa.id})}}">
+                                <img src="{{ asset("img/svg/pen-to-square-solid.svg") }}" alt="pen"></img>
+                            </a></td>
+                            <td> <a href="{{path('eliminarEmpresa', {'id': empresa.id})}}" onclick="return confirm('Esta seguro que desea eliminar los datos')">
+                                <img src="{{ asset("img/svg/dumpster-fire-solid.svg") }}"></img>
+                            </a></td>
+                    </tr>
+                {% endfor %}
+                
+            </tbody>
+
+
+        </table>
+    </div>
+</main>
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+        <script>
+            $(document).ready( function () {
+                $('#myTable').DataTable( {
+                    responsive: true,
+                    scrollY: 320,
+                });
+            } );
+            </script>
+    
+{% endblock %}

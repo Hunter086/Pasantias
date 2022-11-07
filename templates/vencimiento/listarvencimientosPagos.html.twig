@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vencimientos Pasantías{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+    {{parent()}}
+<main class="content-datatable">
+    <div class="container-datatable-box">
+        <span id="list_tittle">Vencimiento Pasantías</span>
+        <table class="container-table" id="myTable">
+            <thead>
+                <tr>
+                    <th>Fecha Pago</th>
+                    <th>Mes Abonado</th>
+                    <th>Procentaje de Cobro</th>
+                    <th>Estado</th>
+                    <th>Fecha Modificacion</th>
+                    <th>Ultimo Usuario</th>
+                    <th>Ver Pago</th>
+                </tr>
+                </tr>
+            </thead>
+            <tbody>
+                  {% for pago in pagos %}
+                    <tr>
+                        <td>{{ pago.fechaPago|date('d-m-Y') }}</td>
+                        <td>{{ pago.mesAbonado}}</td>
+                        <td>{{ pago.porcentajedeCobro}}</td>
+                        <td>{{ pago.Estado}}</td>
+                        <td>{{ pago.fechaModificacion|date('d-m-Y')}}</td>
+                        <td>{{ pago.ultimoUsuario}}</td>  
+                        <td><a href="{{path('verDatosPago', {'id': pago.id,'idPasantia':pago.pasantia.id})}}">
+                            <img src="../img/svg/eye-solid.svg" alt="ojo" ></img>
+                        </a></td>        
+
+                        </tr>
+                {% endfor %}
+            </tbody>
+
+
+        </table>
+    </div>
+</main>
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable( {
+                responsive: true,
+                scrollY: 320,
+            });
+        });
+    </script>
+    
+{% endblock %}

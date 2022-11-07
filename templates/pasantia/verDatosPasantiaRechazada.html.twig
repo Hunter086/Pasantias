@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pasantía Rechazada{% endblock %}
+
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<div class="container text-center bg-white" id="convenioFinalizado">
+        <div class="container-fluid">
+            <i class="far fa-frown-open fa-10x mt-3"style="color: red;" ></i>
+            </br> 
+            <h4 style="color: red; font-size: 30px;">PASANTÍA RECHAZADA</h4>
+
+        </div>
+        </br> 
+</div>
+    
+
+<div class="container text-justify bg-white mt-3" id="convenioFinalizado">
+        <div class="container-fluid">
+    
+        <h6 class="text-info mt-3" style="font-size: 25px;">Motivo:</h6>
+        <p>{{pasantia.motivoRechazo}}</p>
+    </div>
+    </br> 
+</div>
+{% endif %} 
+{% endblock %}
+
+
+   

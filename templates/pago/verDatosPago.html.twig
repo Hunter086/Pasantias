@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Datos Pago{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/pagos.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Pago</h2> 
+        <h1 id="pagoTitle">{{pago.getMesAbonado()}}</h1> 
+                <div class="container-title-box">
+                        <div class="title-box">
+                            {{pago.getFechaPago()|date('d-m-Y')}}
+                        </div>
+                        <div class="title-box">
+                            <a href="{{path('verDatosPasante',{'id': pago.getPasante().id})}}" class="btn btn-outline-info btn-lg" role="button">{{pago.getPasante().getNombre()}} {{pago.getPasante().apellido}}</a>
+                        </div>
+                </div>
+                <div class="container-content-box">
+                        <div class="content-box">
+                            <span>Monto Abonado</span>
+                        </div>
+                        <div class="content-box">
+                            <span>${{pago.getTotalAbonado()}}</span>
+                        </div>
+                </div>
+                <div class="container-content-box">
+                        <div class="content-box">
+                            <span>%</span>
+                        </div>
+                        <div class="content-box">
+                            <span>% {{pago.getPorcentajedeCobro()}}</span>
+                        </div>
+                </div>
+                <div class="container-title-box">
+                        <div class="title-box">
+                        </div>
+                        <div class="title-box">
+                            <span>Total: {{pago.getTotalaCobrar()}}</span>
+                        </div>
+                </div>
+                <div class="container-title-box">
+                        <div class="title-box">
+                            <span id="pagoCondition">{{pago.getEstado()}}</span>
+                        </div>
+                        <div class="title-box">
+                        </div>
+                </div>
+                <div class="container-content-box">
+                        <div class="content-box">
+                            <span>Comprobante de Pago</span>
+                        </div>
+                        <div class="content-box">
+                            <span>Factura</span>
+                        </div>
+                        <div class="content-box">
+                            <span>Nota de Crédito</span>
+                        </div>
+                </div>
+                <div class="container-archive-box">
+                        <div class="archive-box">
+                            <a href="{{path('verPDFComprovantedePago', {'id': pago.id})}}" target="_blank">
+                                <img src="{{ asset("img/svg/file-pdf.svg") }}" alt="Ver Convenio">
+                            </a>
+                        </div>
+                        <div class="archive-box">
+                            <a href="{{path('verPDFFactura', {'id': pago.id})}}" target="_blank">
+                                <img src="{{ asset("img/svg/file-pdf.svg") }}" alt="Ver Convenio">
+                            </a>
+                        </div>
+                        <div class="archive-box">
+                            <a href="{{path('verPDFNotadeCredito', {'id': pago.id})}}" target="_blank">
+                                <img src="{{ asset("img/svg/file-pdf.svg") }}" alt="Ver Convenio">
+                            </a>
+                        </div>
+                </div>
+                
+    </div>
+</main>
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+       {{parent()}}
+        <script>
+            $(document).ready(function() {
+                $('#myTable').DataTable( {
+                    responsive: true,
+                    scrollY:        320,
+                });
+            });
+        </script>   
+               
+                <script >
+                    elementos="{{pago.getEstado()}}";
+                    console.log(elementos);
+                    var pagoTitle = document.getElementById('pagoTitle');
+                    var pagoCondition = document.getElementById('pagoCondition');
+                    if(elementos=="Pagado"){
+                        pagoTitle.className.style.backgroundColor='#2f9d2b';
+                        pagoCondition.className.style.backgroundColor='#2f9d2b';
+                    }
+                    if(elementos== "Facturado"){
+                        pagoTitle.style.backgroundColor='#2b909d';
+                        pagoCondition.style.backgroundColor='#2b909d';
+                    }
+                    if(elementos== "No Abonado"){
+                        pagoTitle.className.style.backgroundColor='#9d552b';
+                        pagoCondition.className.style.backgroundColor='#9d552b';
+                    }
+                </script>
+
+{% endblock %}
+

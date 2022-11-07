@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Seguimiento Pasante{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Pasante</h2> 
+        <h1>Seguimiento Pasante</h1> 
+            {{ form_start(formulario, {'enctype':'multipart/form-data'})}}
+                <div class="container-form-box">
+                        <div class="form-choice">
+                                {{ form_widget(formulario.isSeguimientodelMes)}}
+                                <label>Seguimiento del Mes</label>
+                        </div>
+                        <div class="form-choice">
+                                {{ form_widget(formulario.isCertificado)}}
+                                <label>Certificado</label>
+                        </div>
+                        <div class="form-box">
+                                {{ form_row(formulario.isInformeSeguimiento)}}
+                        </div>
+                </div>
+                <div class="container-form-box-buttom">
+                        <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                {{ form_widget(formulario.Actualizar)}}
+                            </a>
+                </div>
+
+            {{ form_end(formulario) }}
+    </div>
+</main>
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+       {{parent()}}
+{% endblock %} 

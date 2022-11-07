@@ -1,0 +1,107 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Datos del Pasante{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Datos del Pasante</h2> 
+        <h1>{{pasante.getNombre()}} {{pasante.getApellido()}}</h1>
+                <div class="container-form-box">
+                        <div class="form-box">
+                            <img src="../../img/svg/id-school.svg" alt="Legajo">
+                            <h3>{{pasante.getLegajo()}}</h3>
+                        </div>
+                        <div class="form-box">
+                            <img src="../../img/svg/money-check-dollar-solid.svg" alt="Cuit/cuil">
+                            <h3>{{pasante.getcuil()}}</h3>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                            <img src="../../img/svg/card-id.svg" alt="DNI">
+                            <h3>{{pasante.getDni()}}</h3>
+                        </div>
+                        <div class="form-box">
+                            <img src="../../img/svg/user-graduate.svg" alt="estado pasante">
+                            <h3 class = "font-weight-bold text-center text-white">{{pasante.getEstadoPasante()}}</h3>
+                        </div>
+                </div>
+                <div class="container-form-box-list-contact">
+                        <h1>Archivos</h1>
+                            <table class="container-table" id="myTable">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Nombre Archivo</th>
+                                        <th>Ver Archivo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for archivo in pasante.getArchivos() %}
+                                        <tr>
+                                            <td>IMG</td>             
+                                            <td>{{ archivo.nombreArchivo }}</td>
+                                            <td><a href="{{path('verPDFPasante', {'id': archivo.id})}}"  target="_blank">ver pdf</a></td>    
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                </div>
+                <div class="container-form-box-list-contact">
+                        <h1>Contactos</h1>
+                            <table class="container-table" id="myTable1">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Telefono</th> 
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for contacto in pasante.contacto %}
+                                        <tr>                       
+                                            <td>{{ contacto.nombre }}</td>
+                                            <td>{{ contacto.apellido }}</td>
+                                            <td>{{ contacto.telefono }}</td>
+                                            <td>{{ contacto.email }}</td> 
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                </div>
+                
+    </div>
+</main>
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+       {{parent()}}
+       <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function() {
+                $('#myTable').DataTable({
+                    "pageLength": 5,
+                    "responsive": true,
+                    "language": {
+                        "url": "{{asset('js/datatable/Spanish.json')}}"
+                    }
+                });
+                $('#myTable1').DataTable({
+                    "pageLength": 5,
+                    "responsive": true,
+                    "language": {
+                        "url": "{{asset('js/datatable/Spanish.json')}}"
+                    }
+                });
+            });
+        </script>
+{% endblock %} 

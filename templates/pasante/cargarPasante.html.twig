@@ -1,0 +1,86 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Registrar Pasante{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Nueva Pasante</h2> 
+        <h1>Registrar Pasante</h1> 
+            {{ form_start(formulario, {'enctype':'multipart/form-data'})}}
+                <div class="container-form-box">
+                        <div class="form-box">
+                                {{ form_widget(formulario.nombre)}}
+                                <label>Nombre</label>
+                        </div>
+                        <div class="form-box">
+                                {{ form_widget(formulario.apellido)}}
+                                <label>Apellido</label>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                                {{ form_widget(formulario.cuil)}}
+                                <label>Cuil</label>
+                        </div>
+                        <div class="form-box">
+                                        {{ form_widget(formulario.dni)}}
+                                <label>DNI</label>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                                    {{ form_widget(formulario.legajo)}}
+                                <label>Legajo</label>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                                {{ form_widget(formulario.provincia)}}
+                                {#<label>Provincia</label>#}
+                        </div>
+                        <div class="form-box">
+                                {{ form_widget(formulario.localidad)}}
+                                <label>Localidad</label>
+                        </div>
+                        <div class="form-box">
+                                {{ form_widget(formulario.direccion)}}
+                                <label>Dirección</label>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                                <h3>Contacto</h3>
+                                <ul class="contacto" data-prototype="{{form_widget(formulario.contacto.vars.prototype) |e('html_attr') }}">
+                                        <li data-collection-holder-class="contacto">{{ form_widget(formulariocontacto)}}</li>
+                                </ul>
+                            <button type="button" class="add_item_link btn btn-outline-info text-center" id="btn-contact" data-collection-holder-class="contacto"><img src="../img/svg/circle-plus-solid.svg" alt="Agregar Contacto"></button>
+                        </div>
+                </div>
+                
+                <div class="container-form-box-buttom">
+                        <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                {{ form_widget(formulario.Guardar)}} 
+                            </a>
+                </div>
+
+            {{ form_end(formulario) }}
+    </div>
+</main>
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+       {{parent()}}
+       <script src="{{ asset("/PasantiasyBecasFuturxsProfesionales/js/contacto/contacto.js") }}"></script>
+{% endblock %} 

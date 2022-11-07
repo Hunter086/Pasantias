@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Factura{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Factura</h2> 
+        <h1>Cargar Factura Crédito</h1> 
+            {{ form_start(formulario, {'enctype':'multipart/form-data'})}}
+                <div class="container-form-box">
+                        <div class="form-box">
+                               {{ form_widget(formulario.factura)}}
+                                <label>Cargar Factura</label>
+                        </div>
+                </div>
+                <div class="container-form-box-buttom">
+                    <div class="form-box-buttom" id="buttom-load">
+                        <a href="#">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            {{ form_widget(formulario.Guardar)}}
+                        </a>
+                    </div>
+                </div>
+            {{ form_end(formulario) }}
+    </div>
+
+
+
+</main>
+
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+       {{parent()}}
+        <script src="{{ asset("js/form/filterSelect.js") }}"></script>
+{% endblock %}

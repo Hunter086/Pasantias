@@ -1,0 +1,56 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Registrar Departamento Administrativo{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Departamento Administrativo</h2> 
+        <h1>Nuevo  Departamento Administrativo</h1> 
+            {{ form_start(formulario, {'enctype':'multipart/form-data'})}}
+                <div class="container-form-box">
+                        <div class="form-box">
+                               {{ form_widget(formulario.nombre)}}
+                                <label>Nombre</label>
+                        </div>
+                        <div class="form-box">
+                                {{ form_widget(formulario.encargado)}}
+                                <label>Encargado</label>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                                {{ form_widget(formulario.telefono)}}
+                                <label>Teléfono</label>
+                        </div>
+                        <div class="form-box">
+                                {{ form_widget(formulario.email)}}
+                                 <label>Email</label>
+                        </div>
+                </div>
+                
+                <div class="container-form-box-buttom">
+                        <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                {{ form_widget(formulario.Guardar)}} 
+                            </a>
+                </div>
+
+            {{ form_end(formulario) }}
+    </div>
+</main>
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+       {{parent()}}
+       <script src="{{ asset("/PasantiasyBecasFuturxsProfesionalesTest/js/contacto/contacto.js") }}"></script>
+{% endblock %} 

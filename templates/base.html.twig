@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Pasantías y Becas Futurxs Profesionales{% endblock %}</title>
+        {% block stylesheets %}
+            <!-- Bootstrap CSS -->
+            <link rel="stylesheet" href="{{asset("css/sidebar/base_style.css")}}">
+            <link rel="stylesheet" href="{{asset("css/sidebar/form_style.css")}}">
+            <link rel="stylesheet" href="{{asset("css/byLucasBauducco/by.css")}}">
+            <link href={{ asset("css/datatable/dataTables.min.css") }} rel="stylesheet" type="text/css">
+            <link href={{ asset("css/datatable/responsivetable.css") }} rel="stylesheet" type="text/css">
+            <link href={{ asset("css/datatable/autoFill.dataTables.min.css") }} rel="stylesheet" type="text/css">
+            <link href={{ asset("css/datatable/buttons.dataTables.min.css") }} rel="stylesheet" type="text/css">
+            <link href={{ asset("css/datatable/buttons.scroller.dataTables.min.css") }} rel="stylesheet" type="text/css">
+            
+        {% endblock %}
+
+    </head>
+    
+    <body style="background-image: url({{ asset("/PasantiasyBecasFuturxsProfesionalesTest/img/navbar/UNRaf_iso_bg.png") }});">
+    
+    {% block body %}
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+        <symbol id="toggle" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+        </symbol>
+        <symbol id="chevron-up" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+        </symbol>
+        <symbol id="bell" viewBox="0 0 16 16">
+            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+        </symbol>
+        <symbol id="support" viewBox="0 0 16 16">
+            <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5z"/>
+        </symbol>
+        <symbol id="help" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+        </symbol>
+        <symbol id="edit" viewBox="0 0 16 16">
+            <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+        </symbol>
+        <symbol id="delete" viewBox="0 0 16 16">
+            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+        </symbol>
+        <symbol id="key" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path d="M282.3 343.7L248.1 376.1C244.5 381.5 238.4 384 232 384H192V424C192 437.3 181.3 448 168 448H128V488C128 501.3 117.3 512 104 512H24C10.75 512 0 501.3 0 488V408C0 401.6 2.529 395.5 7.029 391L168.3 229.7C162.9 212.8 160 194.7 160 176C160 78.8 238.8 0 336 0C433.2 0 512 78.8 512 176C512 273.2 433.2 352 336 352C317.3 352 299.2 349.1 282.3 343.7zM376 176C398.1 176 416 158.1 416 136C416 113.9 398.1 96 376 96C353.9 96 336 113.9 336 136C336 158.1 353.9 176 376 176z"/>
+        </symbol>
+        <symbol id="mesas" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path d="M336 64h-53.88C268.9 26.8 233.7 0 192 0S115.1 26.8 101.9 64H48C21.5 64 0 85.48 0 112v352C0 490.5 21.5 512 48 512h288c26.5 0 48-21.48 48-48v-352C384 85.48 362.5 64 336 64zM96 392c-13.25 0-24-10.75-24-24S82.75 344 96 344s24 10.75 24 24S109.3 392 96 392zM96 296c-13.25 0-24-10.75-24-24S82.75 248 96 248S120 258.8 120 272S109.3 296 96 296zM192 64c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S160 113.7 160 96C160 78.33 174.3 64 192 64zM304 384h-128C167.2 384 160 376.8 160 368C160 359.2 167.2 352 176 352h128c8.801 0 16 7.199 16 16C320 376.8 312.8 384 304 384zM304 288h-128C167.2 288 160 280.8 160 272C160 263.2 167.2 256 176 256h128C312.8 256 320 263.2 320 272C320 280.8 312.8 288 304 288z"/>
+        </symbol>
+        <symbol id="receipt" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path d="M13.97 2.196C22.49-1.72 32.5-.3214 39.62 5.778L80 40.39L120.4 5.778C129.4-1.926 142.6-1.926 151.6 5.778L192 40.39L232.4 5.778C241.4-1.926 254.6-1.926 263.6 5.778L304 40.39L344.4 5.778C351.5-.3214 361.5-1.72 370 2.196C378.5 6.113 384 14.63 384 24V488C384 497.4 378.5 505.9 370 509.8C361.5 513.7 351.5 512.3 344.4 506.2L304 471.6L263.6 506.2C254.6 513.9 241.4 513.9 232.4 506.2L192 471.6L151.6 506.2C142.6 513.9 129.4 513.9 120.4 506.2L80 471.6L39.62 506.2C32.5 512.3 22.49 513.7 13.97 509.8C5.456 505.9 0 497.4 0 488V24C0 14.63 5.456 6.112 13.97 2.196V2.196zM96 144C87.16 144 80 151.2 80 160C80 168.8 87.16 176 96 176H288C296.8 176 304 168.8 304 160C304 151.2 296.8 144 288 144H96zM96 368H288C296.8 368 304 360.8 304 352C304 343.2 296.8 336 288 336H96C87.16 336 80 343.2 80 352C80 360.8 87.16 368 96 368zM96 240C87.16 240 80 247.2 80 256C80 264.8 87.16 272 96 272H288C296.8 272 304 264.8 304 256C304 247.2 296.8 240 288 240H96z"/>
+        </symbol>
+        <symbol id="house" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M575.8 255.5C575.8 273.5 560.8 287.6 543.8 287.6H511.8L512.5 447.7C512.5 450.5 512.3 453.1 512 455.8V472C512 494.1 494.1 512 472 512H456C454.9 512 453.8 511.1 452.7 511.9C451.3 511.1 449.9 512 448.5 512H392C369.9 512 352 494.1 352 472V384C352 366.3 337.7 352 320 352H256C238.3 352 224 366.3 224 384V472C224 494.1 206.1 512 184 512H128.1C126.6 512 125.1 511.9 123.6 511.8C122.4 511.9 121.2 512 120 512H104C81.91 512 64 494.1 64 472V360C64 359.1 64.03 358.1 64.09 357.2V287.6H32.05C14.02 287.6 0 273.5 0 255.5C0 246.5 3.004 238.5 10.01 231.5L266.4 8.016C273.4 1.002 281.4 0 288.4 0C295.4 0 303.4 2.004 309.5 7.014L564.8 231.5C572.8 238.5 576.9 246.5 575.8 255.5L575.8 255.5z"/>
+        </symbol>
+        <symbol id="faqs" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M0 64C0 28.65 28.65 0 64 0H224V128C224 145.7 238.3 160 256 160H384V198.6C310.1 219.5 256 287.4 256 368C256 427.1 285.1 479.3 329.7 511.3C326.6 511.7 323.3 512 320 512H64C28.65 512 0 483.3 0 448V64zM256 128V0L384 128H256zM288 368C288 288.5 352.5 224 432 224C511.5 224 576 288.5 576 368C576 447.5 511.5 512 432 512C352.5 512 288 447.5 288 368zM432 464C445.3 464 456 453.3 456 440C456 426.7 445.3 416 432 416C418.7 416 408 426.7 408 440C408 453.3 418.7 464 432 464zM368 328C368 336.8 375.2 344 384 344C392.8 344 400 336.8 400 328V321.6C400 316.3 404.3 312 409.6 312H450.1C457.8 312 464 318.2 464 325.9C464 331.1 461.1 335.8 456.6 338.3L424.6 355.1C419.3 357.9 416 363.3 416 369.2V384C416 392.8 423.2 400 432 400C440.8 400 448 392.8 448 384V378.9L471.5 366.6C486.6 358.6 496 342.1 496 325.9C496 300.6 475.4 280 450.1 280H409.6C386.6 280 368 298.6 368 321.6V328z"/>
+        </symbol>
+        <symbol id="send" viewBox="0 0 16 16"><path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+        </symbol>
+    </svg>
+
+    {# BOTON TOGGLE BARRA DE NAVEGACIÓN #}
+
+    <div class="navbar-toggle link" id="navbar-toggle">
+        <svg class="" width="32" height="32"><use xlink:href="#toggle"/></svg>
+    </div>
+
+    {# BOTÓN HOME #}
+
+    <div class="navbar-toggle-home link">
+        <svg class="" width="32" height="32"><use xlink:href="#house"/></svg>
+    </div>
+
+    {# BARRA DE NAVEGACIÓN #}
+
+    <div class="navbar" id="navbar">
+        <div class="links">
+            <a href="{{path('inicio')}}" class="link home"><svg class="" width="32" height="32"><use xlink:href="#house"/></svg></a>
+            <div class="dropdown" data-dropdown>
+                <a class="link" href="#" data-dropdown-button>Organizaciones</a>
+                <div class="dropdown-menu">
+                    <a href="{{path('registroEmpresa')}}" class="link">Nueva Organización</a>
+                    <a href="{{path('listarEmpresaActiva')}}" class="link">Organizaciones Activas</a>
+                    <a href="{{path('listarEmpresaInactivas')}}" class="link">Organizaciones Inactivas</a>
+                </div>
+            </div>
+            <div class="dropdown" data-dropdown>
+                <a class="link" href="#" data-dropdown-button>Pasantes</a>
+                <div class="dropdown-menu">
+                    <a href="{{path('registroPasante')}}" class="link">Registrar Pasante</a>
+                    <a href="{{path('listarPasanteActivos')}}" class="link">Pasantes Activos</a>
+                    <a href="{{path('listarPasantesInactivos')}}" class="link">Pasantes Inactivos</a>
+                </div>
+            </div>
+            <div class="dropdown" data-dropdown>
+                <a class="link" href="#" data-dropdown-button>Convenio</a>
+                <div class="dropdown-menu">
+                    <a href="{{path('recepcionConvenio')}}" class="link">Nuevo Convenio</a>
+                    <a href="{{path('listarConvenioActivo')}}" class="link">Activos</a>
+                    <a href="{{path('listarConvenioInactivo')}}" class="link">Inactivos</a>
+                    <a href="{{path('listarConvenioEnProceso')}}"class="link">En Proceso</a>
+                    <a href="{{path('listarConvenioaRenovar')}}" class="link">A Renovar</a>
+                </div>
+            </div>
+            <div class="dropdown" data-dropdown>
+                <a class="link" href="#" data-dropdown-button>Pasantías</a>
+                <div class="dropdown-menu">
+                    <a href="{{path('nuevaPasantia')}}" class="link">Nueva Pasantía</a>
+                    <a href="{{path('listarPasantiaActivas')}}" class="link">Activas</a>
+                    <a href="{{path('listarPasantiaInactiva')}}" class="link">Inactivas</a>
+                    <a href="{{path('listarPasantiaEnProceso')}}"class="link">En Proceso</a>
+                    <a href="{{path('listarPasantiarRenovar')}}" class="link">A Renovar</a>
+                    <a href="{{path('listarPasantiaRechazada')}}" class="link">Rechazadas</a>
+                </div>
+            </div>
+            <div class="dropdown" data-dropdown>
+                <a class="link" href="#" data-dropdown-button>Departamentos Departamentos</a>
+                <div class="dropdown-menu">
+                    <a href="{{path('registroAreaUnRaf')}}" class="link">Nuevo Departamento</a>
+                    <a href="{{path('listarAreaUnRaf')}}" class="link">Ver Departamentos</a>
+                </div>
+            </div>
+            <div class="dropdown" data-dropdown>
+                <a class="link" href="#" data-dropdown-button>Vencimientos</a>
+                <div class="dropdown-menu">
+                    <a href="{{path('listarvencimientosPasantias')}}" class="link">Pasantías</a>
+                    <a href="{{path('listarvencimientosConvenios')}}" class="link">Convenios</a>
+                    <a href="{{path('listarvencimientosPagos')}}" class="link">Pagos</a>
+                </div>
+            </div>
+        </div>
+        <div class="logo">
+            <div class="text">Pasantías y Becas Futurxs Profesionales</div>
+            <div class="divider">|</div>
+            <img class="large" src="{{asset('./img/navbar/UNRaf_logo.png')}}" alt="Logo">
+            <img class="small" src="{{asset('./img/navbar/UNRaf_iso.png')}}" alt="LogoSmall">
+        </div>
+    </div>
+<!-- Alertas -->
+    <div class="content-alert">
+        {#este for indica un array de alerta ejemplo
+        {% for message in app.flashes('seguimientoPasanteMes') %}
+            <div class="alert warning">
+                <i class="far fa-bell"></i>
+                {{ message|raw}}
+               
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            </div>
+        {% endfor %}
+        #}
+         {#En este caso solo quiero el primero#}
+        {# Or {% set variable = null %} as well #}
+        {% set seguimientoPasanteMes = app.flashes('seguimientoPasanteMes') %}
+         {% set seguimientoEmpresaMes = app.flashes('seguimientoEmpresaMes') %}
+          {% set renovacionPasantia = app.flashes('renovacionPasantia') %}
+           {% set renovacionconvenio = app.flashes('renovacionconvenio') %}
+            {% set pagoVencido = app.flashes('pagoVencido') %}
+        {% if seguimientoPasanteMes is empty %}
+        {% else %}
+            <div class="alert warning">
+                <i class="far fa-bell"></i>
+                {#{{ message|raw}}#}
+                {{seguimientoPasanteMes[0]|raw}}
+                <span class="closebtn" onclick="this.parentElement.style.display='none';"> &times; </span>
+            </div>
+        {% endif %}
+        {% if seguimientoEmpresaMes is empty %}
+        {% else %}
+            <div class="alert warning">
+                <i class="far fa-bell"></i>
+                {#{{ message|raw}}#}
+                {{seguimientoEmpresaMes[0]|raw}}
+                <span class="closebtn" onclick="this.parentElement.style.display='none';"> &times; </span>
+            </div>
+        {% endif %}
+        {#{% for message in app.flashes('renovacionPasantia') %}#}
+        {% if renovacionPasantia is empty %}
+            {% else %}
+            <div class="alert warning">
+                <i class="far fa-bell"></i>
+                {#{{ message|raw}}#}
+                {{renovacionPasantia[0]|raw}}
+                <span class="closebtn" onclick="this.parentElement.style.display='none';"> &times; </span>
+            </div>
+        {% endif %}
+        {#{% endfor %}#}
+
+        {#{% for message in app.flashes('renovacionconvenio') %}#}
+        {% if renovacionconvenio is empty %}
+            
+            {% else %}
+            <div class="alert warning">
+                {#{{ message|raw}}#}
+                {{renovacionconvenio[0]|raw}}
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">  &times; </span>
+            </div>
+        {% endif %}
+        {#{% endfor %}
+        {#{% for message in app.flashes('pagoVencido') %}#}
+        {% if pagoVencido is empty %}
+        {% else %}
+            <div class="alert warning">
+                {#{{ message|raw}}#}
+                {{pagoVencido[0]|raw}}
+                <span class="closebtn" onclick="this.parentElement.style.display='none';"> &times; </span>
+            </div>
+        {% endif %}
+        {#{% endfor %}#}
+        {% for message in app.flashes('info') %}
+
+            <div class="alert success">
+                
+                {{ message }}
+                 <span class="closebtn" onclick="this.parentElement.style.display='none';"> &times; </span>
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('error') %}
+            <div  id="danger" class="alert danger"  >
+                
+                {{ message }}
+                <span class="closebtn" onclick="this.parentElement.style.display='none';"> &times; </span>
+            </div>
+        {% endfor %}
+    </div>
+        
+    {# FOOTER #}
+    <div class="bi">
+        <img id="by" src="{{asset('./img/svg/header-logo.png')}}" alt="by Lucas Bauducco">
+    </div>
+    <footer>
+        <div class="helpbox">
+            <div class="ayuda helpbox-option">
+                <a data-modal-button href="#modal-ayuda"><div><svg class="link" width="32" height="32"><use xlink:href="#help"></svg></div></a>                
+                <div class="text">Ayuda</div>
+            </div>
+            <div class="soporte helpbox-option">
+                <a  data-modal-button href="#modal-soporte" href=""><div><svg class="link" width="32" height="32"><use xlink:href="#support"/></svg></div></a>
+                <div class="text">Soporte Técnico</div>
+            </div>    
+        </div>
+        <div class="profile">
+            <div class="footer-dropdown" id="divCampana" data-dropdown>
+                <div class="footer-dropdown-menu notif">
+                    <div class="container">
+                        {#Novedades#}
+                    </div>
+                </div>
+                <a class="profile-button" data-dropdown-button> <!-- campana -->
+                    <svg class="link" width="32" height="32"><use xlink:href="#bell"/></svg>
+                </a>
+            </div>
+            <div class="log-status">Logged in as {{app.user.email}}</div>
+            <div class="profile-pic">Profile img</div>
+            <div class="footer-dropdown" data-dropdown>
+                <div class="footer-dropdown-menu">
+                    <a href="#" class="link"><svg width="16" height="16"><use xlink:href="#key"/></svg><div class="">Cerrar Sesión</div></a>
+                </div>
+                <a class="profile-button" data-dropdown-button> <!-- chevron -->
+                    <svg class="link" width="32" height="32"><use xlink:href="#chevron-up"/></svg>
+                </a>
+            </div>
+            
+        </div>
+    </footer>
+    {# MODAL DE SOPORTE #}
+
+    <div class="modal" id="modal-soporte" data-modal>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="title">Soporte Técnico</div>
+                <div>Enviar un mensaje a soporte técnico. Su petición será respondida vía su dirección de e-mail institucional.</div>
+            </div>
+            <div class="modal-body">
+                Motivo de consulta:
+                <select id="selectMotivo" class="form-field">
+                    <option>Permisos</option>
+                    <option>Errores en la web</option>
+                    <option>Soporte técnico</option>
+                </select>
+                Descripción:
+                <textarea class="form-field area" id="inputMensaje" placeholder="Ingrese el mensaje.."></textarea>
+                <p id="avisoMensaje" style="color:red;text-align:center;"></p>
+            </div>
+            <div class="modal-footer">
+                <a onclick="envioMail()" class="boton amarillo">Enviar <svg class="" width="16" height="16"><use xlink:href="#send"/></svg>
+                </a>
+                <a class="boton normal" data-modal-dismiss>Cerrar</a>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    </body>
+    
+    {% block javascripts %}
+        <!--Toast -->
+        <script src="{{asset('js/toastr.min.js')}}"></script>
+        <!--Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+		<script src={{ asset("/PasantiasyBecasFuturxsProfesionales/js/datatable/datatablefunction.js") }}></script>
+        <script src={{ asset("/PasantiasyBecasFuturxsProfesionales/js/datatable/responsivetable.js") }}></script>
+        <script src={{ asset("/PasantiasyBecasFuturxsProfesionales/js/datatable/dataTables.autoFill.min.js") }}></script>
+        <script src={{ asset("/PasantiasyBecasFuturxsProfesionales/js/datatable/dataTables.buttons.min.js") }}></script>
+        <script src={{ asset("/PasantiasyBecasFuturxsProfesionales/js/datatable/dataTables.scroller.min.js") }}></script>
+        
+        <script src="{{ asset("js/sidebar/base_script.js") }}"></script>
+    {% endblock %}
+</html>

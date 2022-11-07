@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pasantías Inactivas{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+    {{parent()}}
+<main class="content-datatable">
+    <div class="container-datatable-box">
+        <span id="list_tittle">Pasantías Inactivas</span>
+        <table class="container-table" id="myTable">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Ver Datos</th> 
+                </tr>
+            </thead>
+            <tbody>
+                 {% for pasantias in pasantia %}
+                    <tr>
+                                                
+                        <td>{{ pasantias.nombre }}</td>
+                        <td><a href="{{path('verPasantia', {'id': pasantias.id})}}">
+                            <img src="../img/svg/eye-solid.svg" alt="ojo" ></img>
+                        </a></td>
+                        </tr>
+                {% endfor %}
+            </tbody>
+
+
+        </table>
+    </div>
+</main>
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable( {
+                responsive: true,
+                scrollY: 320,
+            });
+        });
+    </script>
+{% endblock %}

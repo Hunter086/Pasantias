@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cargar Pasante{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Nueva Pasantía</h2> 
+        <h1>Cargar Pasante</h1> 
+            {{ form_start(formulario, {'enctype':'multipart/form-data'})}}
+                <table class="table dataTables" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Cuil/Cuit</th>
+                            <th>Agregar/Quitar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pasante in pasantes %}
+                            <tr>
+                                                        
+                                    <td>{{ pasante.nombre }}</td>
+                                    <td>{{ pasante.apellido }}</td>
+                                    <td>{{ pasante.legajo }}</td>
+                                    {% if pasante.estadoPasante == "Inactivo" %}
+                                        <td id="agregar"><a href="{{path('agregarNuevoPasantedePasantia', {'id': pasantia.id,'idPasante': pasante.id})}}">Agregar</a></td>
+                                        {% else %}
+                                         <td id="quitar"><a href="{{path('quitarNuevoPasanteCargado', {'id': pasantia.id,'idPasante': pasante.id})}}">Quitar</a></td>
+                                    {% endif %}
+                                
+                                    
+                                </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="container-form-box">
+                        <div class="form-box">
+                                
+                        </div>
+                        <div class="form-box">
+                            
+                        </div>
+                </div>
+                <div class="container-form-box-buttom">
+                        <div class="form-box-buttom" id="buttom-load">
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                {{ form_widget(formulario.Finalizar)}} 
+                            </a>
+                        </div>
+                </div>
+            {{ form_end(formulario) }}
+    </div>
+
+
+
+</main>
+
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+        {{parent()}}
+       <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script>$(document).ready( function () {
+                $('#myTable').DataTable();
+            } );
+        </script>
+
+        
+{% endblock %} 

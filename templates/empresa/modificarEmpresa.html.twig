@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modificar Organización{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Organización</h2> 
+        <h1>Modificar Organización</h1> 
+            {{ form_start(formulario, {'enctype':'multipart/form-data'})}}
+                <div class="container-form-box">
+                        <div class="form-box">
+                                {{ form_widget(formulario.razonSocial)}}
+                                <label>Razon Social</label>
+                        </div>
+                        <div class="form-box">
+                                {{ form_widget(formulario.nombre)}}
+                                <label>Nombre Fantasía</label>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                                {{ form_widget(formulario.cuit)}}
+                                <label>Cuit</label>
+                        </div>
+                        <div class="form-box">
+                                {{ form_widget(formulario.situaciondeIva)}}
+                                {#<label>Situacion de Iva</label>#}
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                                {{ form_widget(formulario.web)}}
+                                <label>Sitio Web</label>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                                {{ form_widget(formulario.provincia)}}
+                                {#<label>Provincia</label>#}
+                        </div>
+                        <div class="form-box">
+                                {{ form_widget(formulario.localidad)}}
+                                <label>Localidad</label>
+                        </div>
+                        <div class="form-box">
+                                {{ form_widget(formulario.direccion)}}
+                                <label>Dirección</label>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <table id="myTable">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Telefono</th> 
+                                    <th>Email</th>
+
+                                    
+                                    <th>Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for contactos in contacto %}
+                                    <tr>
+                                                                
+                                        <td >{{ contactos.nombre}}</td>
+                                        <td >{{ contactos.apellido}}</td>
+                                        <td >{{ contactos.email}}</td>
+                                        <td >{{ contactos.telefono}}</td>
+                                            
+                                        <td><a href="{{path('eliminarContactoEmpresa', {'id': contactos.id})}}"><img src="../../img/svg/eliminar-contacto.svg" alt="Eliminar Contacto"/></a></td>  
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    <div class="form-box">
+                        <h3>Contacto</h3>
+                            <ul class="contacto" data-prototype="{{form_widget(formulario.contacto.vars.prototype)|e('html_attr') }}">
+                            <li data-collection-holder-class="contacto">{{ form_widget(formulariocontacto)}}</li>
+                            </ul>
+                            <button type="button" class="add_item_link btn btn-outline-info text-center" id="btn-contact" data-collection-holder-class="contacto">
+                               <img src="../../img/svg/circle-plus-solid.svg" alt="Agregar Contacto"/>
+                            </button>
+                    </div>
+                </div>
+                
+                <div class="container-form-box-buttom">
+                        <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                {{ form_widget(formulario.Guardar)}} 
+                            </a>
+                </div>
+
+            {{ form_end(formulario) }}
+    </div>
+</main>
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+       {{parent()}}
+       <script src="{{ asset("/PasantiasyBecasFuturxsProfesionales/js/contacto/contacto.js") }}"></script>
+        <script>
+                $(document).ready(function() {
+                        $('#myTable').DataTable( {
+                                responsive: true,
+                                scrollX: 10,
+                        });
+                });
+        </script>
+{% endblock %} 

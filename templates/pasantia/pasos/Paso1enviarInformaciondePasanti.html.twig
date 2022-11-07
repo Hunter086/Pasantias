@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Solicitar Documentación de la Pasantía{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/pasantia.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Nueva Pasantía</h2> 
+        <h1>Solicitar Documentación de la Pasantía</h1> 
+            {{ form_start(formulario, {'enctype':'multipart/form-data'})}}
+                <div class="container-form-box">
+                        <div class="form-box">
+                                {{ form_widget(formulario.nombre)}}
+                                <label>Nombre Pasantia</label>
+                        </div>
+                        <div class="form-choice">
+                            <input type="checkbox" id="contactoRealizado" name="contactoRealizado" value="contactoRealizado" required>
+                            <label>Contacto Realizado</label>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                                <input type="text"  id="inputareaActual"  name="inputareaActual" onkeyup="filterFunction('inputareaActual','paso1_enviar_informacion_pasantia_areaActual');" required>
+                                <label>Área Actual</label>
+                                {{ form_widget(formulario.areaActual)}}
+                        </div>
+                        <div class="form-box">
+                            <input type="text" id="inputareaEncargada"  name="inputareaEncargada" onkeyup="filterFunction('inputareaEncargada','paso1_enviar_informacion_pasantia_areaEncargada');" required >
+                            <label>Área Encargada</label>
+                            {{ form_widget(formulario.areaEncargada)}}
+                        </div>
+                </div>
+                <div class="container-form-box-buttom">
+                    <div class="form-box-buttom" id="buttom-load">
+                        <a href="#">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            {{ form_widget(formulario.Iniciar)}} 
+                        </a>
+                    </div>
+                </div>
+                    <div class="container-form-box-progress">
+                        <div class="progress-bar" style="width: 0%;"><span>0%</span></div>
+                    </div>
+
+            {{ form_end(formulario) }}
+    </div>
+
+
+
+</main>
+
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+       {{parent()}}
+        <script src="{{ asset("js/form/filterSelect.js") }}"></script>
+{% endblock %} 

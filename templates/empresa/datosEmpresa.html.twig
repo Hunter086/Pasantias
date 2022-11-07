@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Datos Organización{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Datos Organización</h2> 
+        <h1>{{empresa.getNombre()}}</h1> 
+                <div class="container-form-box">
+                        <div class="form-box">
+                            <img src="../img/svg/signature-solid.svg" alt="Razon Social">
+                            <h3>{{empresa.getRazonSocial()}}</h3>
+                        </div>
+                        <div class="form-box">
+                            <img src="../img/svg/money-check-dollar-solid.svg" alt="Situación de Iva">
+                            <h3>{{empresa.getSituaciondeIva()}} </h3>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                            <img src="../img/svg/money-check-solid.svg" alt="Cuit">
+                            <h3>{{empresa.getCuit()}}</h3>
+                        </div>
+                        <div class="form-box">
+                            <img src="../img/svg/argentina-svgrepo-com.svg" alt="Provincia">
+                            <h3>{{empresa.getProvincia()}}</h3>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                            <img src="../img/svg/city-solid.svg" alt="Ciudad">
+                            <h3>{{empresa.getLocalidad()}}</h3>
+                        </div>
+                        <div class="form-box">
+                            <img src="../img/svg/road-solid.svg" alt="Calle">
+                            <h3>{{empresa.getDireccion()}}</h3>
+                        </div>
+                </div>
+                <div class="container-form-box-list-contact">
+                        <h1>Contactos</h1>
+                            <table class="container-table" id="myTable">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Telefono</th> 
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for contacto in empresa.contacto %}
+                                        <tr>
+                                                                    
+                                            <td>{{ contacto.nombre }}</td>
+                                            <td>{{ contacto.apellido }}</td>
+                                            <td>{{ contacto.telefono }}</td>
+                                            <td>{{ contacto.email }}</td>          
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                </div>
+                
+    </div>
+</main>
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+       {{parent()}}
+        <script>$(document).ready( function () {
+                $('#myTable').DataTable( {
+                    responsive: true,
+                    scrollY: 100,
+                });
+        } );</script>
+{% endblock %} 

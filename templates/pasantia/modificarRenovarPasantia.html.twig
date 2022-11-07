@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modificar Fecha de Renovación{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Pasantía</h2> 
+        <h1>Modificar Fecha de Renovación</h1> 
+            {{ form_start(formulario, {'enctype':'multipart/form-data'})}}
+                <div class="container-form-box">
+                        <div class="form-box">
+                            {{ form_widget(formulario.fechaFin) }}
+                            <label>Area Actual</label>
+                        </div>
+                        <div class="form-box">
+                        </div>
+                </div>
+                <div class="container-form-box-buttom">
+                        <div class="form-box-buttom" id="buttom-load">
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                {{ form_widget(formulario.Actualizar)}}
+                            </a>
+                        </div>
+                        <div class="form-box-buttom" id="buttom-back">
+                            <a href="{{path('verDatosPasantiaCargada',{'id': pasantia.id})}}" type="button">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <img src="../../img/svg/eye-solid.svg" alt="ojo" ></img>
+                            </a>
+                        </div>
+                </div>
+
+            {{ form_end(formulario) }}
+    </div>
+
+
+
+</main>
+
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+       {{parent()}}
+       <script src="{{ asset("js/form/filterSelect.js") }}"></script>
+{% endblock %} 

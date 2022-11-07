@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cargar Convenio{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/pasantia.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Nueva Pasantía</h2> 
+        <h1>Cargar Convenio</h1> 
+            {{ form_start(formulario, {'enctype':'multipart/form-data'})}}
+                <div class="container-form-box">
+                        <div class="form-box">
+                            <input type="text" id="seleccionarConvenio" name="seleccionarConvenio" onkeyup="filterFunction('seleccionarConvenio','paso6_cargar_convenio_convenio');">
+                            <label>Seleccionar Convenio</label>
+                            {{ form_widget(formulario.convenio)}}
+
+                        </div>
+                        <div class="form-box">
+                            <a id="nuevoConvenio" href="{{path('recepcionConvenio')}}">Nuevo Convenio</a>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                                <input type="text" id="inputareaActual" name="inputareaActual" onkeyup="filterFunction('inputareaActual','paso6_cargar_convenio_areaActual');">
+                                <label>Área Actual</label>
+                                {{ form_widget(formulario.areaActual)}}
+                        </div>
+                        <div class="form-box">
+                            <input type="text" id="inputareaEncargada" name="inputareaEncargada" onkeyup="filterFunction('inputareaEncargada','paso6_cargar_convenio_areaEncargada');">
+                            <label>Área Encargada</label>
+                            {{ form_widget(formulario.areaEncargada)}}
+                        </div>
+                </div>
+                <div class="container-form-box-buttom">
+                        <div class="form-box-buttom" id="buttom-load">
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                {{ form_widget(formulario.Siguiente)}} 
+                            </a>
+                        </div>
+                        <div class="form-box-buttom" id="buttom-back">
+                            <a href="{{path('contactoOrganizacion',{'id': pasantia.id})}}" type="button">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <svg id="svg-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"/>
+                                </svg>
+                            </a>
+                        </div>
+                </div>
+                    <div class="container-form-box-progress">
+                        <div class="progress-bar" style="width: 45%;"><span>45%</span></div>
+                    </div>
+
+            {{ form_end(formulario) }}
+    </div>
+
+
+
+</main>
+
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+       {{parent()}}
+       <script src="{{ asset("js/form/filterSelect.js") }}"></script>
+{% endblock %} 

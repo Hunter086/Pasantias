@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UNRaf{% endblock %}
+{% block stylesheets %}
+            <!-- CSS -->
+            <link rel="stylesheet" href="{{asset("css/sidebar/base_style.css")}}">
+            <link rel="stylesheet" href="{{asset("css/sidebar/form_style.css")}}">
+            <link rel="stylesheet" href="{{asset("css/byLucasBauducco/by.css")}}">
+            
+        {% endblock %}
+{% block body %}
+    {{parent()}}
+    {% block main %}
+        <main class="content flex justify-content-center vh80">
+            <div class="bienestar-banner">
+                <img style="width: 100%" src="{{asset("img/bienestar/bienestar-logo.jpg")}}" alt="Bienestar Universitario">
+            </div>
+            <div class="bienestar-data">
+                <img style="width: 100%" src="https://www.unraf.edu.ar/images/ARTICULACION/BANNER/bienestarendatos-2022.jpg" alt="Bienestar Universitario">
+            </div>
+        </main>
+    {% endblock %}
+    
+{% endblock %}
+{% block javascript %}
+    {{parent()}}
+{% endblock %}
+
+
+
+
+
+

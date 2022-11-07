@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Solicitar Firma de Rectorado{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/convenio.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Nuevo Convenio</h2> 
+        <h1>Solicitar Firma de Rectorado</h1> 
+            {{ form_start(formulario, {'enctype':'multipart/form-data'})}}
+                <div class="container-form-box">
+                        <div class="form-choice">
+                            <input type="checkbox" id="solicitarAprobacionRectorado" name="solicitarAprobacionRectorado" value="solicitarAprobacionRectorado" required>
+                            <label>¿Rectorado Firmo el Convenio?</label>
+                        </div>
+                        <div class="form-choice">
+
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                            <input type="text" id="inputultimaArea" name="inputultimaArea" onkeyup="filterFunction('inputultimaArea','paso2_solicitarfirmade_rectorado_ultimaArea');" required>
+                            <label>Área Actual</label>
+                            {{ form_widget(formulario.ultimaArea)}}
+                        </div>
+                        <div class="form-box">
+                            <input type="text" id="inputareaSiguiente" name="inputareaSiguiente" onkeyup="filterFunction('inputareaSiguiente','paso2_solicitarfirmade_rectorado_areaSiguiente');" required>
+                            <label>Área Encargada</label>
+                            {{ form_widget(formulario.areaSiguiente)}}
+                        </div>
+                </div>
+                <div class="container-form-box-buttom">
+                        <div class="form-box-buttom" id="buttom-load">
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                {{ form_widget(formulario.Siguiente)}} 
+                            </a>
+                        </div>
+                </div>
+                    <div class="container-form-box-progress">
+                        <div class="progress-bar" style="width: 14%"><span>14%</span></div>
+                    </div>
+
+            {{ form_end(formulario) }}
+    </div>
+
+
+
+</main>
+
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+       {{parent()}}
+       <script src="{{ asset("js/form/filterSelect.js") }}"></script>
+        
+{% endblock %} 

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Departamentos Administrativos{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+    {{parent()}}
+<main class="content-datatable">
+    <div class="container-datatable-box">
+        <span id="list_tittle">Departamentos Administrativos</span>
+        <table class="container-table" id="myTable">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Encargado</th>
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for areaUnRaf in areaUnRafs %}
+                    <tr>                
+                        <td>{{ areaUnRaf.nombre }}</td>
+                        <td>{{ areaUnRaf.encargado }}</td>                
+                        <td><a href="{{path('modificarAreaUnRaf', {'id': areaUnRaf.id})}}">
+                            <img src="../img/svg/pen-to-square-solid.svg" alt="pen"></img>
+                        </a></td>
+                        <td><a href="{{path('eliminarAreaUnRaf', {'id': areaUnRaf.id})}}" onclick="return confirm('Esta seguro que desea eliminar los datos')">
+                            <img src="../img/svg/dumpster-fire-solid.svg" alt="tacho de basura"></img>
+                        </a></td>
+                    </tr>
+                {% endfor %}
+                
+            </tbody>
+
+
+        </table>
+    </div>
+</main>
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable( {
+                responsive: true,
+                scrollY: 320,
+            });
+        });
+    </script>
+{% endblock %}

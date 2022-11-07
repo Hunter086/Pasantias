@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pasantes Activos{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href={{ asset("css/datatable/dataTables.bootstrap5.min.css") }} rel="stylesheet" type="text/css">
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+    {{parent()}}
+<main class="content-datatable">
+    <div class="container-datatable-box">
+    <span id="list_tittle">Pasantes Activos</span>
+        <table class="container-table" id="myTable">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Cuil/Cuit</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Ver Datos</th> 
+                    <th scope="col">Modificar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pasantes in pasante %}
+                    <tr>
+                                                
+                            <td>{{ pasantes.nombre }}</td>
+                            <td>{{ pasantes.apellido }}</td>
+                            <td>{{ pasantes.cuil }}</td>
+                            <td>{{ pasantes.estadoPasante }}</td> 
+                            <td><a href="{{path('verDatosPasante', {'id': pasantes.id})}}">
+                                <img src="../img/svg/eye-solid.svg" alt="imagen ojo">
+                            </a></td>                  
+                            <td><a href="{{path('modificarPasante', {'id': pasantes.id})}}" onclick="alerta();">
+                                <img src="../img/svg/pen-to-square-solid.svg" alt="pen"></img>
+                            </a></td>
+                            
+                        </tr>
+                {% endfor %}
+                
+            </tbody>
+
+
+        </table>
+    </div>
+</main>
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable( {
+                responsive: true,
+                scrollY:        320,
+            });
+        });
+    </script>
+    
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cargar Datos del Convenio{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/convenio.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Nuevo Convenio</h2> 
+        <h1>Cargar Datos del Convenio</h1> 
+            {{ form_start(formulario, {'enctype':'multipart/form-data'})}}
+                <div class="container-form-box">
+                        <div class="form-box">
+                            {{ form_widget(formulario.fechaInicio)}}
+                            <label>Fecha Inicio</label>
+                        </div>
+                        <div class="form-box">
+                            {{ form_widget(formulario.fechaFin)}}
+                            <label>Fecha Fin</label>
+
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                            {{ form_widget(formulario.isRenovacionAutomatica)}}
+                        </div>
+                        <div class="form-box">
+                            {{ form_widget(formulario.documentoConvenio)}}
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                            <input type="text" id="inputultimaArea" name="inputultimaArea" onkeyup="filterFunction('inputultimaArea','paso4_cargar_datosdel_convenio_ultimaArea');" required>
+                            <label>Área Actual</label>
+                            {{ form_widget(formulario.ultimaArea)}}
+                        </div>
+                        <div class="form-box">
+                            <input type="text" id="inputareaSiguiente" name="inputareaSiguiente" onkeyup="filterFunction('inputareaSiguiente','paso4_cargar_datosdel_convenio_areaSiguiente');" required>
+                            <label>Área Encargada</label>
+                            {{ form_widget(formulario.areaSiguiente)}}
+                        </div>
+                </div>
+                <div class="container-form-box-buttom">
+                        <div class="form-box-buttom" id="buttom-load">
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                {{ form_widget(formulario.Siguiente)}} 
+                            </a>
+                        </div>
+                        <div class="form-box-buttom" id="buttom-back">
+                            <a href="{{path('cargarDatosExpediente',{'id': convenio.id})}}" type="button">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <svg id="svg-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"/>
+                                </svg>
+                            </a>
+                        </div>
+                </div>
+                    <div class="container-form-box-progress">
+                        <div class="progress-bar" style="width: 42%"><span>42%</span></div>
+                    </div>
+
+            {{ form_end(formulario) }}
+    </div>
+
+
+
+</main>
+
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+       {{parent()}}
+       <script src="{{ asset("js/form/filterSelect.js") }}"></script>
+        
+{% endblock %} 

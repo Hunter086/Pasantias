@@ -1,0 +1,147 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acta Compromiso{% endblock %}
+
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+
+<div class ="container bg-white" id="convenioFinalizado" >
+                <h1 class = "text-center mt-2 text-info">Acta Compromiso</h1> 
+                {{ form_start(formulario, {'enctype':'multipart/form-data'})}}
+                    <div class="row ">
+                            
+                        <div class="col-sm-6 mt-5">
+                            <div class = "container ">
+                                    <h6 class = "text-left text-info">Area Actual</h6>
+                                        {{ form_widget(formulario.areaActual)}}
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mt-3">
+                            
+                            <div class = "container ">
+                                    
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                            
+                        <div class="col-sm-6 mt-5">
+                            <div class = "container ">
+                                    <h6 class = "text-left text-info text-center">Solicitar Acta Compromiso</h6>
+    
+                                    {{ form_widget(formulario.isEnviarActasdeCompromiso)}}
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mt-5">
+                            
+                            <div class = "container ">
+                                    <h6 class = "text-left text-info text-center">Recibir Acta Compromiso</h6>
+    
+                                                
+                                    {{ form_widget(formulario.isRecibirActasdeCompromiso)}}
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                            
+                        <div class="col-sm-6 mt-5">
+                            <div class = "container ">
+                                    <h6 class = "text-left text-info text-center">Fecha Inicio Pasantía</h6>
+    
+                                    {{ form_widget(formulario.fechaInicio)}}
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mt-5">
+                            
+                            <div class = "container ">
+                                    <h6 class = "text-left text-info text-center">Fecha Fin Pasantía</h6>
+    
+                                                
+                                    {{ form_widget(formulario.fechaFin)}}
+                                
+                            </div>
+                        </div>
+                    </div>
+                   <div class="row ">
+                            
+                        <div class="col-sm-6 mt-5">
+                            <div class = "container ">
+                                    <h5 class = "text-left text-info">Siguiente paso a realizar - Cargar Pasante</h5>
+                                        <h6 class = "text-left text-info">Area Encargada</h6>
+                                        {{ form_widget(formulario.areaEncargada)}}
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mt-3">
+                            
+                            <div class = "container ">
+                                    
+                                
+                            </div>
+                        </div>
+                    </div>
+                   
+
+                   <div class="row ">
+                            
+                        <div class="col-sm-4 mt-4">
+                            <div class = "container text-center">
+                                     
+                                     <a href="{{path('enviodeNominasyDocumentacion',{'id': pasantia.id})}}" class="btn btn-outline-info btn-lg" role="button">Atras</a>
+                                    
+                            </div>
+                        </div>
+                        <div class="col-sm-4 mt-4">
+                            
+                            <div class = "container text-center ">
+                                   
+                                    
+                                    
+                            </div>
+                        </div>
+                         <div class="col-sm-4 mt-4">
+                            
+                            <div class = "container text-center ">
+                                    {{ form_widget(formulario.Siguiente, {attr: {class: 'btn btn-outline-info btn-lg'}})}}
+                                    
+                                    
+                            </div>
+                        </div>
+                        
+                </div>
+                
+                   
+
+                    <div class = "container mt-3 mb-3 text-center" align="left">
+                        <div class="row mt-2">
+                            <div class="col-sm-12">
+                                <div class = "container ">
+                                    <div class="progress" style="height: 40px; margin-top: 50px;">
+                                        <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="110" aria-valuemin="0" aria-valuemax="100">80%</div>
+                                    </div>
+                            
+                                </div>
+
+                        
+                            </div>
+                        </div>
+                        
+                    </div>
+               
+
+
+
+            {{ form_end(formulario) }}
+            <br>
+            
+             
+
+
+</div>
+<br><br>
+
+
+ {% endif %} 
+{% endblock %}

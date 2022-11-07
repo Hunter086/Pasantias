@@ -1,0 +1,93 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Nueva Organización{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Nueva Organización</h2> 
+        <h1>Alta Organización</h1> 
+            {{ form_start(formulario, {'enctype':'multipart/form-data'})}}
+                <div class="container-form-box">
+                        <div class="form-box">
+                                {{ form_widget(formulario.razonSocial)}}
+                                <label>Razon Social</label>
+                        </div>
+                        <div class="form-box">
+                                {{ form_widget(formulario.nombre)}}
+                                <label>Nombre Fantasía</label>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                                {{ form_widget(formulario.cuit)}}
+                                <label>Cuit</label>
+                        </div>
+                        <div class="form-box">
+                                {{ form_widget(formulario.situaciondeIva)}}
+                                {#<label>Situacion de Iva</label>#}
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                                {{ form_widget(formulario.web)}}
+                                <label>Sitio Web</label>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                         <div class="form-box">
+                                {{ form_widget(formulario.provincia)}}
+                                {#<label>Provincia</label>#}
+                        </div>
+                        <div class="form-box">
+                                {{ form_widget(formulario.localidad)}}
+                                <label>Localidad</label>
+                        </div>
+                        <div class="form-box">
+                                {{ form_widget(formulario.direccion)}}
+                                <label>Dirección</label>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                        <h2>Contacto</h2>
+                            <ul class="contacto" data-prototype="{{form_widget(formulario.contacto.vars.prototype)|e('html_attr') }}">
+                            <li data-collection-holder-class="contacto">{{ form_widget(formulariocontacto)}}</li>
+                            </ul>
+                            <button type="button" class="add_item_link btn btn-outline-info text-center" id="btn-contact" data-collection-holder-class="contacto">
+                                <img src="../img/svg/circle-plus-solid.svg" alt="Agregar Contacto">
+                            </button>
+                        </div>
+                </div>
+                
+                <div class="container-form-box-buttom">
+                        <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                {{ form_widget(formulario.Guardar)}} 
+                            </a>
+                </div>
+
+            {{ form_end(formulario) }}
+    </div>
+</main>
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+       {{parent()}}
+       <script src="{{ asset("/PasantiasyBecasFuturxsProfesionales/js/contacto/contacto.js") }}"></script>
+        <script>
+                $(document).ready( function () {
+                        $('#myTable').DataTable();
+                } );
+        </script>
+{% endblock %} 
+

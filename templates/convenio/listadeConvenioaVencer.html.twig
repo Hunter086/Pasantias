@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Convenios a Renovar{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+    {{parent()}}
+<main class="content-datatable">
+    <div class="container-datatable-box">
+        <span id="list_tittle">Convenios a Renovar</span>
+        <table class="container-table" id="myTable">
+            <thead>
+                <tr>
+                        <th>Nombre Empresa</th>
+                        <th>Fecha Fin</th>
+                        <th>Nro Expediente</th>
+                        <th>Fecha Modificacion</th>       
+                        <th>Ver Convenio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for convenio in convenios %}
+                    <tr>
+                                                
+                        <td>{{ convenio.empresa.getNombre() }}</td>
+                        <td>{{ convenio.fechaFin|date('d-m-Y') }}</td>
+                        <td>{{convenio.numeroExpediente}}</td>                  
+                        <td><a href="{{path('modificarFechaRenovacionConvenio',{'id': convenio.id})}}">
+                            <img src="../img/svg/pen-to-square-solid.svg" alt="pen"></img>
+                        </a></td>
+                        <td><a href="{{path('verDatosConvenioFinalizado',{'id': convenio.id})}}">
+                            <img src="../img/svg/eye-solid.svg" alt="ojo" ></img>
+                        </a></td>
+                    </tr>
+                {% endfor %}
+                
+            </tbody>
+
+
+        </table>
+    </div>
+</main>
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable( {
+                responsive: true,
+                scrollY: 320,
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Pagos{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block body %}
+    {{parent()}}
+<main class="content-datatable">
+    <div class="container-datatable-box">
+        <span id="list_tittle">Lista de Pagos</span>
+        <table class="container-table" id="myTable">
+            <thead>
+                <tr>
+                    <th>ID Pago</th>
+                    <th>Fecha Pago</th>
+                    <th>Mes Abonado</th>
+                    <th>Estado</th>
+                    <th>Cargar Comprobante de Pago</th> 
+                    <th>Cargar Factura</th>
+                    <th>Cargar Nota Crédito</th>
+                    <th>Ver Pago</th>
+                    <th>Eliminar Pago</th>
+                </tr>
+            </thead>
+            <tbody>
+                 {% for pago in pagos %}
+                    <tr>  
+                        <td>{{ pago.id}}</td>
+                        <td>{{ pago.fechaPago|date('d-m-Y')}}</td>                
+                        <td>{{ pago.mesAbonado}}</td>
+                        <td>{{ pago.Estado}}</td>
+                            
+                            
+                        <td><a href="{{path('cargandoComprobantedePago', {'id': pago.id,'idPasantia':pasantia.id, 'idPasante': pasante.id})}}">
+                            <img src="{{ asset("img/svg/pen-to-square-solid.svg") }}" alt="pen"></img>
+                        </a></td>
+                        <td><a href="{{path('cargandoFactura', {'id': pago.id,'idPasantia':pasantia.id, 'idPasante': pasante.id})}}">
+                            <img src="{{ asset("img/svg/pen-to-square-solid.svg") }}" alt="pen"></img>
+                        </a></td>
+                        <td><a href="{{path('cargandoNotadeCredito', {'id': pago.id,'idPasantia':pasantia.id, 'idPasante': pasante.id})}}">
+                            <img src="{{ asset("img/svg/pen-to-square-solid.svg") }}" alt="pen"></img>
+                        </a></td>
+                        <td><a href="{{path('verDatosPago', {'id': pago.id,'idPasantia':pasantia.id})}}">
+                            <img src="{{ asset("img/svg/eye-solid.svg") }}" alt="ojo" ></img>
+                        </a></td>
+                        
+                        <td><a href="{{path('eliminarPago', {'id': pago.id,'idPasantia':pasantia.id})}}">
+                             <img src="{{ asset("img/svg/trash.svg") }}" alt="trash" ></img>
+                        </a></td>
+                    </tr>
+                {% endfor %}
+                
+            </tbody>
+
+
+        </table>
+    </div>
+</main>
+
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable( {
+                responsive: true,
+                scrollY:        320,
+            });
+                
+        });
+    </script>
+{% endblock %}

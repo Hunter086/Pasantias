@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recibir y Verificar Documentación{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/pasantia.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Nueva Pasantía</h2> 
+        <h1>Recibir y Verificar Documentación</h1> 
+            {{ form_start(formulario, {'enctype':'multipart/form-data'})}}
+                <div class="container-form-box">
+                        <div class="form-choice">
+                            <input type="checkbox" id="notaSolicituddePasante" name="notaSolicituddePasante" value="contactoRealizado" required>
+                            <label>Nota de Solicitud de Pasante</label>
+                        </div>
+                        <div class="form-choice">
+                             <input type="checkbox" id="constanciadeIncripcionenAfip" name="notaSolicituddePasante" value="contactoRealizado" required>
+                            <label>Constanciade Incripcionen Afip</label>
+                        </div>
+                        <div class="form-choice">
+                            <input type="checkbox" id="DDJJ" name="notaSolicituddePasante" value="contactoRealizado" required>
+                            <label>DDJJ</label>
+                        </div>
+                        <div class="form-choice">
+                            <input type="checkbox" id="enviosolicitudRector" name="notaSolicituddePasante" value="contactoRealizado" required>
+                            <label>Envio solicitud Rector</label>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                            <input type="text" id="inputareaActual" name="inputareaActual" onkeyup="filterFunction('inputareaActual','paso2_recibiry_verificar_documentacion_areaActual');" required>
+                            <label>Área Actual</label>
+                            {{ form_widget(formulario.areaActual)}}
+                        </div>
+                        <div class="form-box">
+                            <input type="text" id="inputareaEncargada" name="inputareaEncargada" onkeyup="filterFunction('inputareaEncargada','paso2_recibiry_verificar_documentacion_areaEncargada');" required>
+                            <label>Área Encargada</label>
+                            {{ form_widget(formulario.areaEncargada)}}
+                        </div>
+                </div>
+                <div class="container-form-box-buttom">
+                        <div class="form-box-buttom" id="buttom-load">
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                {{ form_widget(formulario.Siguiente)}} 
+                            </a>
+                        </div>
+                </div>
+                    <div class="container-form-box-progress">
+                        <div class="progress-bar" style="width: 9%"><span>9%</span></div>
+                    </div>
+
+            {{ form_end(formulario) }}
+    </div>
+
+
+
+</main>
+
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+       {{parent()}}
+       <script src="{{ asset("js/form/filterSelect.js") }}"></script>
+        
+{% endblock %} 

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Datos Convenio{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+{{parent()}}
+<main class="content">
+    <div class="container-box">
+        <h2>Datos Convenio</h2> 
+        <h1 class="font-weight-bold text-center text-white" >{{convenio.getEmpresa().getNombre()}}</h1> 
+                <div class="container-form-box">
+                        <div class="form-box">
+                            <img src="../img/svg/industry.svg" alt="Ver Datos de la Organización"><br>
+                            <a href="{{path('verDatosEmpresa',{'id': convenio.getEmpresa().getId()})}}" class="btn" role="button">Ver Datos de la Organización</a>
+                        </div>
+                        <div class="form-box">
+                            <img src="../img/svg/signature-solid.svg" alt="TituloExpediente">
+                            <h3>{{convenio.getTituloExpediente()}}</h3>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                            <img src="{{ asset("img/svg/hour-start.svg") }}" alt="Fecha Inicio">
+                            <h3>{{convenio.getFechaInicio()|date('d-m-Y')}}</h3>
+                        </div>
+                        <div class="form-box">
+                            <img src="{{ asset("img/svg/hour-end.svg") }}" alt="Fecha Fin">
+                            <h3>{{convenio.getFechaFin()|date('d-m-Y')}}</h3>
+                        </div>
+                </div>
+                <div class="container-form-box">
+                        <div class="form-box">
+                            <h3>{{convenio.getEstado()}}</h3>
+                        </div>
+                        <div class="form-box">
+                            <a href="{{path('verPDFDocumentoConvenio', {'id': convenio.id})}}"  class="btn" role="button" target="_blank">
+                                <img src="../img/svg/file-pdf.svg" alt="Ver Convenio">
+                            </a>
+                        </div>
+                </div>
+                
+    </div>
+</main>
+{% endif %} 
+{% endblock %}
+{% block javascripts %}
+       {{parent()}}
+{% endblock %} 

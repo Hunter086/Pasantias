@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Convenios Activos{% endblock %}
+{% block stylesheets %}
+            {{parent()}}
+            <link href="{{ asset("css/form/forms.css") }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+    {{parent()}}
+<main class="content-datatable">
+    <div class="container-datatable-box">
+        <span id="list_tittle">Convenios Activos</span>
+        <table class="container-table" id="myTable">
+            <thead>
+                <tr>
+                        <th>Nombre Empresa</th>
+                        <th>Fecha Fin</th>
+                        <th>Nro Expediente</th>
+                        <th>Ver Convenio</th>
+                        <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for convenios in convenio %}
+                    <tr>
+                                                
+                        <td>{{ convenios.empresa.getNombre() }}</td>
+                        <td>{{ convenios.fechaFin|date('d-m-Y') }}</td>
+                        <td>{{ convenios.numeroExpediente}}</td>                  
+                        <td><a href="{{path('verDatosConvenioFinalizado',{'id': convenios.id})}}">
+                            <img src="../img/svg/eye-solid.svg" alt="ojo" ></img>
+                        </a></td>
+                        <td><a href="{{path('eliminarConvenio',{'id': convenios.id})}}" onclick="return confirm('Esta seguro que desea eliminar los datos')">
+                            <img src="../img/svg/dumpster-fire-solid.svg" alt="tacho de basura"></img>
+                        </a></td>
+                    </tr>
+                {% endfor %}
+                
+            </tbody>
+
+
+        </table>
+    </div>
+</main>
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+     <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable( {
+                responsive: true,
+                scrollY:        320,
+            });
+        });
+    </script>
+{% endblock %}
