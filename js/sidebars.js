@@ -1,0 +1,3 @@
+$('#dropdown').collapse({
+  toggle: false
+})
